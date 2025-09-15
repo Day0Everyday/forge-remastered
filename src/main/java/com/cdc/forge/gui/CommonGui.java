@@ -1,5 +1,8 @@
 package com.cdc.forge.gui;
 
+import com.cdc.forge.gui.controller.CommonNavigationController;
+import com.cdc.forge.gui.controller.NavigationController;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,8 +10,11 @@ public class CommonGui extends JFrame {
 
     // 主内容区域，可以动态切换界面
     private JPanel contentPanel;
+    private NavigationController navigationController;
 
     public CommonGui() {
+        // 初始化控制器
+        navigationController = new CommonNavigationController(this);
 
         // 获取屏幕尺寸和窗口边界
         Dimension screen = getToolkit().getScreenSize();
@@ -42,6 +48,10 @@ public class CommonGui extends JFrame {
         setVisible(true);
     }
 
+    public NavigationController getNavigationController() {
+        return navigationController;
+    }
+
     /**
      * 显示欢迎界面GUI
      * 该方法用于切换当前内容面板为欢迎界面，会清空现有内容并添加新的欢迎界面组件
@@ -57,11 +67,23 @@ public class CommonGui extends JFrame {
         contentPanel.removeAll();
 
         // 添加欢迎界面到内容面板
-        contentPanel.add(new WelcomeGui(), null);
+        contentPanel.add(new WelcomeGui(navigationController), null);
 
         contentPanel.revalidate();
         contentPanel.repaint();
     }
+
+    /**
+     * 显示新游戏界面
+     * 该方法用于切换当前内容面板为新游戏界面
+     */
+    public void showNewGameGui() {
+        contentPanel.removeAll();
+        contentPanel.add(new NewGameGui(), null);
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
+
 
     public static void main(String[] args) {
         new CommonGui();
