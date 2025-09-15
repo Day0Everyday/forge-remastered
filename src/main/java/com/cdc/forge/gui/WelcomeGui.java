@@ -19,18 +19,18 @@ public class WelcomeGui extends JPanel {
         add(titleLabel);
 
         JRadioButton soloButton = new JRadioButton();
-        soloButton.setText("Solo - Play against the Computer");
+        soloButton.setText("Solo - Play Against The Computer");
         soloButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // 添加垂直间距
         add(Box.createVerticalStrut(100));
         add(soloButton);
 
-        JButton startButton = new JButton("next");
-        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JButton nextButton = new JButton("Next");
+        nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // 添加垂直间距
         add(Box.createVerticalStrut(100));
-        add(startButton);
+        add(nextButton);
     }
 }
